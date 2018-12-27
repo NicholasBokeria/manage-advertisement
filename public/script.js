@@ -18,5 +18,7 @@ button.addEventListener('click', event => {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(data)
+    }).then(() => {
+        alert('The Ad changed!')
     })
 })
