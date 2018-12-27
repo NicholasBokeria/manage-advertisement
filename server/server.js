@@ -22,8 +22,12 @@ app.post('/advertisement/save', (req, res) => {
 
     const adv = new Advertisement({ title, description, link })
     adv.save()
-        .then(adv => console.log(adv))
+        .then(adv => console.log('s'))
         .catch(err => console.log(err))
+})
+
+app.get('/advertisement', (req, res) => {
+    Advertisement.find({}, (err, adv) => res.json(adv))
 })
 
 app.listen(process.env.PORT, () => {
