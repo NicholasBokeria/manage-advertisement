@@ -14,15 +14,16 @@ app.use(express.static(path.join(__dirname, '../public')))
 app.post('/advertisement/save', (req, res) => {
     const title = req.body.title
     const description = req.body.description
+    const linkName = req.body.linkName
     const link = req.body.link
 
     Advertisement.deleteMany({}, (res) => {
         console.log(res)
     })
 
-    const adv = new Advertisement({ title, description, link })
+    const adv = new Advertisement({ title, description, linkName, link })
     adv.save()
-        .then(adv => console.log('s'))
+        .then(adv => console.log(adv))
         .catch(err => console.log(err))
 })
 

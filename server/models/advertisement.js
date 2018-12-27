@@ -9,6 +9,9 @@ const AdvertisementSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    linkName: {
+        type: String
+    },
     link: {
         type: String
     }

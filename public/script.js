@@ -6,11 +6,11 @@ button.addEventListener('click', event => {
 
     let title = document.querySelector('input[name="title"]').value
     let description = document.querySelector('input[name="description"]').value
+    let linkName = document.querySelector('input[name="link-name"]').value
     let link = document.querySelector('input[name="link"]').value
 
-    let data = { title, description, link }
+    let data = { title, description, linkName, link }
 
-    console.log(data)
     fetch('/advertisement/save', {
         method: 'POST',
         headers: {
@@ -18,7 +18,5 @@ button.addEventListener('click', event => {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(data)
-    }).then(() => {
-        alert('The Ad changed!')
     })
 })
