@@ -9,3 +9,8 @@ if (env === 'development') {
         process.env[key] = envConfig[key]
     })
 }
+
+const login = "nika"
+const password = "nika"
+
+module.exports = {login, password}
