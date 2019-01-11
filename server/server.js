@@ -13,11 +13,11 @@ app.use(express.static(path.join(__dirname, '../public')))
 
 app.post('/advertisement', (req, res) => {
     if (req.body.login == process.env.login && req.body.password == process.env.password) {
-        res.send({ redirect: '/advertisement' });
+        res.send({ redirect: '/advertisement/ad' });
     }
 })
 
-app.get('/advertisement', (req, res) => {
+app.get('/advertisement/ad', (req, res) => {
     res.sendFile(path.join(__dirname, '../public/advertisement.html'))
 })
 
@@ -30,14 +30,14 @@ app.post('/advertisement/save', (req, res) => {
     Advertisement.deleteMany({}, (res) => {
         console.log(res)
     })
-    
+
     const adv = new Advertisement({ title, description, linkName, link })
     adv.save()
         .then(adv => console.log(adv))
         .catch(err => console.log(err))
 })
 
-app.get('/advertisement/ad', (req, res) => {
+app.get('/advertisement', (req, res) => {
     Advertisement.find({}, (err, adv) => res.json(adv))
 })
 
