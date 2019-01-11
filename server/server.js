@@ -10,15 +10,16 @@ const app = express()
 
 app.use(bodyParser.json())
 app.use(express.static(path.join(__dirname, '../public')))
+app.use('/static', express.static(path.join(__dirname, '../public')))
 
 app.post('/advertisement', (req, res) => {
     if (req.body.login == process.env.login && req.body.password == process.env.password) {
-        res.send({ redirect: '/advertisement/ad' });
+        res.send({ redirect: '/static/advertisement.html' });
     }
 })
 
-app.get('/advertisement/ad', (req, res) => {
-    res.sendFile(path.join(__dirname, '../public/advertisement.html'))
+app.get('/static/advertisement.html', (req, res) => {
+    res.sendFile('static/advertisement.html')
 })
 
 app.post('/advertisement/save', (req, res) => {
