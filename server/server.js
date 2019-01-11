@@ -30,14 +30,14 @@ app.post('/advertisement/save', (req, res) => {
     Advertisement.deleteMany({}, (res) => {
         console.log(res)
     })
-
+    
     const adv = new Advertisement({ title, description, linkName, link })
     adv.save()
         .then(adv => console.log(adv))
         .catch(err => console.log(err))
 })
 
-app.get('/advertisement', (req, res) => {
+app.get('/advertisement/ad', (req, res) => {
     Advertisement.find({}, (err, adv) => res.json(adv))
 })
 
